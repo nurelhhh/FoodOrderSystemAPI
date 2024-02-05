@@ -1,0 +1,221 @@
+{
+	"info": {
+		"_postman_id": "8a0c9c59-c191-4300-9ca0-99b2dcc391cd",
+		"name": "FoodOrderSystem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "10633577"
+	},
+	"item": [
+		{
+			"name": "Menus",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoibnVyZWxoaGgiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQZWxheWFuIiwiZXhwIjoxNzA3MTQ3MTcxfQ.FdpWvZ81aOJMDi0ZZf-Q00YPHRYydCSBtXgs3y1ObPcc6vVuZtehV5R4ByjK_0dCXOLXOd0zszntZ_yRnDLyDA"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoibnVyZWxoaGgiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQZWxheWFuIiwiZXhwIjoxNzA3MTM5MzU0fQ.aTTtpO8MxTuc2M3n8A_e2Am8g4Rg80b5N9T_HQZb9zqG3qOLQdk3bjV_W6cbjreQX8pNuDtCWzxLDtnmTTdpNA",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": "https://{{base_url}}/api/menus"
+			},
+			"response": []
+		},
+		{
+			"name": "Menu",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://{{base_url}}/api/menus/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Menu",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Ketoprak\",\r\n    \"menuStatusId\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://{{base_url}}/api/menus/"
+			},
+			"response": []
+		},
+		{
+			"name": "Menu",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"menuId\":1,\r\n    \"name\":\"Indomie Goreng\",\r\n    \"menuStatusId\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://{{base_url}}/api/menus/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Menu",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "https://{{base_url}}/api/menus/5"
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"kasirku\",\r\n    \"name\":\"Kas\",\r\n    \"roleId\":2,\r\n    \"password\":\"HelloWorld\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://{{base_url}}/api/auth/register"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"nurelhhh\",\r\n    \"password\":\"HelloWorld\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://{{base_url}}/api/auth/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Orders",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoia2FzaXJrdSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6Ikthc2lyIiwiZXhwIjoxNzA3MTU4MjA4fQ.MzOgFQmpzqfRMP5MmgypFNWNQNY8ebZ5i7QtQiLb8h9Mps8D2O52j0ezdW0CkQkORTPs-QYKaGbOcPRz_xnqUA"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "https://{{base_url}}/api/orders"
+			},
+			"response": []
+		},
+		{
+			"name": "Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tableNo\":5,\r\n    \"username\":\"nurelhhh\",\r\n    \"orderStatusId\":1,\r\n    \"menuOrders\":[\r\n        {\r\n            \"menuId\":1,\r\n            \"qty\":9\r\n        }\r\n    ]   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://{{base_url}}/api/orders/"
+			},
+			"response": []
+		},
+		{
+			"name": "Order",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "https://{{base_url}}/api/orders/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Order-status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoibnVyZWxoaGgiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQZWxheWFuIiwiZXhwIjoxNzA3MTU4NDUyfQ.gwhip5p3Qy0eV9HSE6tRshWEoPjARHY-c_ecqcIbzMHS0UnjGnSdIqRiavETW-dp_rOx5tJGTQXTYTyH0jSa_g"
+					}
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderStatusId\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://{{base_url}}/api/orders/status/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Order-menus",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"menuId\":2,\r\n        \"qty\": 4\r\n    },\r\n    {\r\n        \"menuId\":1,\r\n        \"qty\": 6\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://{{base_url}}/api/orders/menus/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Orders-report",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoia2FzaXJrdSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6Ikthc2lyIiwiZXhwIjoxNzA3MTU4MjA4fQ.MzOgFQmpzqfRMP5MmgypFNWNQNY8ebZ5i7QtQiLb8h9Mps8D2O52j0ezdW0CkQkORTPs-QYKaGbOcPRz_xnqUA"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "https://{{base_url}}/api/orders/report/kasirku"
+			},
+			"response": []
+		}
+	]
+}
