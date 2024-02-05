@@ -80,6 +80,47 @@ namespace FoodOrderSystemAPI.Services
             return order;
         }
 
+        public async Task<List<OrderDTO>> GetOrderReport(string username)
+        {
+            var orders = await (from o in _context.Orders
+                                join os in _context.OrderStatuses on o.OrderStatusId equals os.OrderStatusId
+                                where o.Username == username
+                                select new OrderDTO
+                                {
+                                    Username = o.Username,
+                                    TableNo = o.TableNo,
+                                    OrderNo = o.OrderNo,
+                                    OrderStatusId = o.OrderStatusId,
+                                    OrderStatus = os.Name,
+                                    OrderId = o.OrderId,
+                                    Date = o.Date
+                                })
+                               .AsNoTracking()
+                               .ToListAsync();
+
+            var ordersIds = orders.Select(Q => Q.OrderId).ToList();
+
+            var menuOrders = await (from mo in _context.MenuOrders
+                                    join m in _context.Menus on mo.MenuId equals m.MenuId
+                                    where ordersIds.Contains(mo.OrderId)
+                                    select new MenuOrderDTO
+                                    {
+                                        Menu = m.Name,
+                                        MenuId = m.MenuId,
+                                        OrderId = mo.OrderId,
+                                        Qty = mo.Qty
+                                    })
+                   .AsNoTracking()
+                   .ToListAsync();
+
+            for (int i = 0; i < orders.Count; i++)
+            {
+                orders[i].MenuOrders = menuOrders.Where(Q => Q.OrderId == orders[i].OrderId).ToList();
+            }
+
+            return orders;
+        }
+
         public async Task CreateOrder(OrderDTO orderDTO)
         {
             var newOrderNo = await CreateOrderNo();

@@ -4,6 +4,7 @@ using FoodOrderSystemAPI.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace FoodOrderSystemAPI.Controllers
 {
@@ -33,6 +34,23 @@ namespace FoodOrderSystemAPI.Controllers
             return await _service.GetOrder(id);
         }
 
+        // GET: api/Orders/5
+        [HttpGet("report/{username}"), Authorize(Roles = "Pelayan")]
+        public async Task<ActionResult<List<OrderDTO>>> GetOrderReport(string username)
+        {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            if (identity != null)
+            {
+                var usernameClaim = identity.FindFirst(ClaimTypes.Name).Value;
+                if (username != usernameClaim)
+                {
+                    return StatusCode(401);
+                }
+            }
+
+            return await _service.GetOrderReport(username);
+        }
+
         // POST: api/Orders
         [HttpPost]
         public async Task<ActionResult<OrderDTO>> PostOrder(OrderDTO orderDTO)
@@ -42,7 +60,7 @@ namespace FoodOrderSystemAPI.Controllers
         }
 
         // PUT: api/Orders/status/5
-        [HttpPatch("status/{id}")]
+        [HttpPatch("status/{id}"), Authorize(Roles = "Kasir")]
         public async Task<IActionResult> PatchOrderStatus(int id, OrderStatusPatchDTO orderStatusPatchDTO)
         {
             return await _service.PatchOrderStatus(id, orderStatusPatchDTO.OrderStatusId);
